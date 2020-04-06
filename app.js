@@ -21,13 +21,14 @@ var Milk = () => (<li>Milk</li>)
 
 
 var Eggs = () => (<li>Eggs</li>)*/
-     
+   
+//--------------FIRST REFACTOR------------------------//
 
 var Heading = () => (
     <h2>Grocery List Refactor</h2>
 );
 
-var GroceryListItem = (props) => (
+/*var GroceryListItem = (props) => (
 <ul>
     <li>{props.item[0]}</li>
     <li>{props.item[1]}</li>
@@ -39,7 +40,31 @@ var GroceryList = () => (
         <Heading />
         <GroceryListItem item={['Milk', 'Eggs']}/>
     </div>
-)
+)*/
+
+//---------------------SECOND REFACTOR------------------------//
+
+class GroceryListItem extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render () {
+        return (<li>{this.props.item}</li>)
+    }
+};
+
+var GroceryList = (props) => (
+    <div>
+        <h2>Groceriez</h2>
+        <ul>{props.items.map(item =>
+        <GroceryListItem item={item} />
+        )}
+        </ul>
+    </div>
+    
+);
 
 
-ReactDOM.render(<GroceryList />, document.getElementById("app"));
+ReactDOM.render(<GroceryList items={["Milk", "Eggs", "Protein Powder"]} />, document.getElementById("app"));
+
