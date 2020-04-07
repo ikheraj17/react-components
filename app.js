@@ -47,10 +47,29 @@ var GroceryList = () => (
 class GroceryListItem extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            bold: false
+        }
     }
 
+
+    onMouseOver () {
+        this.setState({bold: !this.state.bold});
+    }
+
+    
+
+    
+
     render () {
-        return (<li>{this.props.item}</li>)
+
+        var style = {
+            fontWeight: this.state.bold ? "bold" : "normal"
+        }
+
+
+        return (<li style={style} onMouseOver={this.onMouseOver.bind(this)}>{this.props.item}</li>)
     }
 };
 
