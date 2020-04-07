@@ -54,11 +54,13 @@ class GroceryListItem extends React.Component {
     }
 
 
-    onMouseOver () {
+    onMouseEnter () {
         this.setState({bold: !this.state.bold});
     }
 
-    
+    onMouseOut () {
+        this.setState({bold: this.state.bold});
+    }
 
     
 
@@ -69,7 +71,7 @@ class GroceryListItem extends React.Component {
         }
 
 
-        return (<li style={style} onMouseOver={this.onMouseOver.bind(this)}>{this.props.item}</li>)
+        return (<li style={style} onMouseEnter={this.onMouseEnter.bind(this)} onMouseOut={this.onMouseOut.bind(this)}>{this.props.item}</li>)
     }
 };
 
@@ -77,7 +79,7 @@ var GroceryList = (props) => (
     <div>
         <h2>Groceriez</h2>
         <ul>{props.items.map(item =>
-        <GroceryListItem item={item} />
+        <GroceryListItem item={item} key={item} />
         )}
         </ul>
     </div>
